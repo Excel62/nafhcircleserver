@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Deposit Approved — NAFH Circle</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #0a0a0f; color: #ffffff; -webkit-font-smoothing: antialiased; }
+    .wrapper { max-width: 620px; margin: 0 auto; padding: 40px 16px; }
+    .card { background: #111120; border: 1px solid #2a2a3d; border-radius: 20px; overflow: hidden; }
+
+    /* Header */
+    .header { background: linear-gradient(135deg, #001a0d 0%, #002d1a 50%, #001a0d 100%); padding: 40px 32px; text-align: center; border-bottom: 1px solid #4caf5030; position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 300px; height: 300px; background: radial-gradient(circle, #4caf5010 0%, transparent 70%); }
+    .logo-circle { width: 72px; height: 72px; background: linear-gradient(135deg, #d4af37, #f0d060); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 28px; font-weight: 800; color: #000; position: relative; z-index: 1; }
+    .brand { font-size: 22px; font-weight: 700; color: #d4af37; letter-spacing: 1px; position: relative; z-index: 1; }
+    .brand span { color: #ffffff; }
+
+    /* Success Banner */
+    .status-banner { background: linear-gradient(90deg, #001a0d, #002d1a, #001a0d); padding: 20px 32px; text-align: center; border-bottom: 1px solid #4caf5020; }
+    .status-pill { display: inline-flex; align-items: center; gap: 8px; background: #4caf5015; border: 1px solid #4caf5040; border-radius: 100px; padding: 8px 20px; }
+    .status-dot { width: 8px; height: 8px; background: #4caf50; border-radius: 50%; }
+    .status-text { font-size: 13px; font-weight: 600; color: #4caf50; letter-spacing: 0.5px; text-transform: uppercase; }
+
+    /* Success icon */
+    .success-icon-wrap { text-align: center; padding: 32px 32px 0; }
+    .success-icon { width: 80px; height: 80px; background: linear-gradient(135deg, #4caf5020, #4caf5030); border: 2px solid #4caf5050; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 36px; }
+
+    /* Body */
+    .body { padding: 28px 32px 40px; }
+    .greeting { font-size: 20px; font-weight: 600; color: #ffffff; margin-bottom: 12px; text-align: center; }
+    .greeting span { color: #d4af37; }
+    .message { font-size: 14px; color: #8888a0; line-height: 1.8; margin-bottom: 28px; text-align: center; }
+
+    /* Amount highlight */
+    .amount-card { background: linear-gradient(135deg, #001a0d, #002d1a); border: 1px solid #4caf5030; border-radius: 16px; padding: 28px; text-align: center; margin-bottom: 28px; position: relative; overflow: hidden; }
+    .amount-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, #4caf5015, transparent); }
+    .amount-label { font-size: 11px; font-weight: 700; color: #4caf50; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+    .amount-value { font-size: 48px; font-weight: 800; color: #4caf50; line-height: 1; margin-bottom: 4px; }
+    .amount-currency { font-size: 16px; color: #80c080; margin-bottom: 16px; }
+    .amount-divider { height: 1px; background: #4caf5020; margin: 16px 0; }
+    .amount-meta { display: flex; justify-content: space-between; gap: 12px; }
+    .amount-meta-item { flex: 1; text-align: center; }
+    .amount-meta-label { font-size: 10px; color: #606080; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+    .amount-meta-value { font-size: 13px; color: #ccccdd; font-weight: 600; }
+
+    /* Info card */
+    .info-card { background: #0d0d1a; border: 1px solid #2a2a3d; border-radius: 14px; padding: 24px; margin-bottom: 28px; }
+    .info-card-title { font-size: 11px; font-weight: 700; color: #d4af37; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+    .info-row { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid #1a1a2a; }
+    .info-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .info-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .icon-gold { background: #d4af3715; }
+    .icon-cyan { background: #00bcd415; }
+    .icon-green { background: #4caf5015; }
+    .info-content { flex: 1; }
+    .info-label { font-size: 11px; color: #606080; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+    .info-value { font-size: 13px; color: #ccccdd; line-height: 1.5; }
+
+    /* Alert */
+    .alert { background: #0d1a0d; border: 1px solid #2a3d2a; border-left: 3px solid #4caf50; border-radius: 10px; padding: 14px 18px; margin-bottom: 28px; display: flex; gap: 12px; align-items: flex-start; }
+    .alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .alert-text { font-size: 13px; color: #80b080; line-height: 1.7; }
+    .alert-text strong { color: #90c090; }
+
+    /* CTA */
+    .cta-wrapper { text-align: center; margin: 32px 0; }
+    .cta-button { display: inline-block; background: linear-gradient(135deg, #d4af37, #f0d060); color: #000000; font-size: 14px; font-weight: 700; text-decoration: none; padding: 14px 36px; border-radius: 50px; letter-spacing: 0.5px; }
+
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, #2a2a3d, transparent); margin: 28px 0; }
+    .small-note { font-size: 12px; color: #505060; line-height: 1.7; text-align: center; }
+
+    /* Footer */
+    .footer { background: #0a0a12; border-top: 1px solid #1a1a2a; padding: 28px 32px; text-align: center; }
+    .footer-brand { font-size: 16px; font-weight: 700; color: #d4af37; margin-bottom: 8px; }
+    .footer-links { margin: 12px 0; }
+    .footer-links a { font-size: 12px; color: #505070; text-decoration: none; margin: 0 10px; }
+    .footer-copy { font-size: 11px; color: #404050; margin-top: 12px; line-height: 1.7; }
+    .footer-copy a { color: #606070; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="card">
+
+      <!-- Header -->
+      <div class="header">
+        <div class="logo-circle">N</div>
+        <div class="brand">NAFH <span>Circle</span></div>
+      </div>
+
+      <!-- Status Banner -->
+      <div class="status-banner">
+        <div class="status-pill">
+          <div class="status-dot"></div>
+          <span class="status-text">Deposit Successfully Approved</span>
+        </div>
+      </div>
+
+      <!-- Success Icon -->
+      <div class="success-icon-wrap">
+        <div class="success-icon">✅</div>
+      </div>
+
+      <!-- Body -->
+      <div class="body">
+        <p class="greeting" style="margin-top:16px;">Great news, <span>{{ user.name }}</span>! 🎉</p>
+        <p class="message">
+          Your deposit has been reviewed and <strong style="color:#4caf50">successfully approved</strong>
+          by our team. Your wallet balance has been updated and funds are ready to use.
+        </p>
+
+        <!-- Amount Card -->
+        <div class="amount-card">
+          <p class="amount-label">Amount Credited</p>
+          <p class="amount-value">{{ deposit.amount }}</p>
+          <p class="amount-currency">USDT · BEP20 Network</p>
+          <div class="amount-divider"></div>
+          <div class="amount-meta">
+            <div class="amount-meta-item">
+              <p class="amount-meta-label">Status</p>
+              <p class="amount-meta-value" style="color:#4caf50;">Approved ✓</p>
+            </div>
+            <div class="amount-meta-item">
+              <p class="amount-meta-label">Date</p>
+              <p class="amount-meta-value">{{ deposit.date }}</p>
+            </div>
+            <div class="amount-meta-item">
+              <p class="amount-meta-label">Wallet</p>
+              <p class="amount-meta-value">Main Balance</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Details -->
+        <div class="info-card">
+          <p class="info-card-title">Transaction Info</p>
+
+          <div class="info-row">
+            <div class="info-icon icon-green">💰</div>
+            <div class="info-content">
+              <p class="info-label">Credited To</p>
+              <p class="info-value">Main Wallet Balance</p>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-icon icon-cyan">🌐</div>
+            <div class="info-content">
+              <p class="info-label">Network</p>
+              <p class="info-value">USDT · BEP20 (Binance Smart Chain)</p>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-icon icon-gold">🔗</div>
+            <div class="info-content">
+              <p class="info-label">Your Referral Link</p>
+              <p class="info-value" style="word-break:break-all; color:#00bcd4;">{{ user.dashboardUrl }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alert -->
+        <div class="alert">
+          <div class="alert-icon">💡</div>
+          <div class="alert-text">
+            <strong>What's next?</strong> You can now use your balance to invest in staking plans,
+            withdraw funds, or share your referral link to earn more commissions from your network.
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-wrapper">
+          <a href="{{ user.dashboardUrl }}" class="cta-button">Go to My Dashboard</a>
+        </div>
+
+        <div class="divider"></div>
+
+        <p class="small-note">
+          If you did not make this deposit or have any concerns, please contact us immediately at
+          <a href="mailto:support@nafhcircle.com" style="color:#d4af37;">support@nafhcircle.com</a>
+        </p>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <div class="footer-brand">NAFH Circle</div>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Support</a>
+          <a href="#">Telegram</a>
+        </div>
+        <p class="footer-copy">
+          © {{ new Date().getFullYear() }} NAFH Circle. All rights reserved.<br/>
+          This email was sent to <a href="mailto:{{ user.email }}">{{ user.email }}</a>
+        </p>
+      </div>
+
+    </div>
+
+    <p style="text-align:center; font-size:11px; color:#303040; margin-top:20px; line-height:1.7;">
+      NAFH Circle ·
+      <a href="mailto:support@nafhcircle.com" style="color:#505060; text-decoration:none;">support@nafhcircle.com</a>
+    </p>
+  </div>
+</body>
+</html>

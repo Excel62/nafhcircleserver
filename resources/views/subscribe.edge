@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Subscription Pending — NAFH Circle</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #0a0a0f; color: #ffffff; -webkit-font-smoothing: antialiased; }
+    .wrapper { max-width: 620px; margin: 0 auto; padding: 40px 16px; }
+
+    .card { background: #111120; border: 1px solid #2a2a3d; border-radius: 20px; overflow: hidden; }
+
+    /* Header */
+    .header { background: linear-gradient(135deg, #1a1400 0%, #2d2200 50%, #1a1400 100%); padding: 40px 32px; text-align: center; border-bottom: 1px solid #d4af3730; position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 300px; height: 300px; background: radial-gradient(circle, #d4af3715 0%, transparent 70%); }
+    .logo-circle { width: 72px; height: 72px; background: linear-gradient(135deg, #d4af37, #f0d060); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 28px; font-weight: 800; color: #000; position: relative; z-index: 1; }
+    .brand { font-size: 22px; font-weight: 700; color: #d4af37; letter-spacing: 1px; position: relative; z-index: 1; }
+    .brand span { color: #ffffff; }
+
+    /* Status badge */
+    .status-banner { background: linear-gradient(90deg, #1a1400, #2d2200, #1a1400); padding: 20px 32px; text-align: center; border-bottom: 1px solid #d4af3720; }
+    .status-pill { display: inline-flex; align-items: center; gap: 8px; background: #d4af3715; border: 1px solid #d4af3740; border-radius: 100px; padding: 8px 20px; }
+    .status-dot { width: 8px; height: 8px; background: #d4af37; border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .status-text { font-size: 13px; font-weight: 600; color: #d4af37; letter-spacing: 0.5px; text-transform: uppercase; }
+
+    /* Body */
+    .body { padding: 40px 32px; }
+    .greeting { font-size: 20px; font-weight: 600; color: #ffffff; margin-bottom: 12px; }
+    .greeting span { color: #d4af37; }
+    .message { font-size: 14px; color: #8888a0; line-height: 1.8; margin-bottom: 28px; }
+
+    /* Info card */
+    .info-card { background: #0d0d1a; border: 1px solid #2a2a3d; border-radius: 14px; padding: 24px; margin-bottom: 28px; }
+    .info-card-title { font-size: 11px; font-weight: 700; color: #d4af37; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+    .info-row { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid #1a1a2a; }
+    .info-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .info-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .icon-gold { background: #d4af3715; }
+    .icon-cyan { background: #00bcd415; }
+    .icon-green { background: #4caf5015; }
+    .info-content { flex: 1; }
+    .info-label { font-size: 11px; color: #606080; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+    .info-value { font-size: 13px; color: #ccccdd; line-height: 1.5; }
+
+    /* Steps */
+    .steps-title { font-size: 11px; font-weight: 700; color: #8888a0; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+    .step { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+    .step-number { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #d4af37, #f0d060); color: #000; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .step-content { flex: 1; }
+    .step-title { font-size: 13px; font-weight: 600; color: #ffffff; margin-bottom: 2px; }
+    .step-desc { font-size: 12px; color: #606080; line-height: 1.6; }
+    .step-connector { width: 1px; height: 12px; background: #d4af3730; margin-left: 13px; margin-bottom: 4px; }
+
+    /* CTA Button */
+    .cta-wrapper { text-align: center; margin: 32px 0; }
+    .cta-button { display: inline-block; background: linear-gradient(135deg, #d4af37, #f0d060); color: #000000; font-size: 14px; font-weight: 700; text-decoration: none; padding: 14px 36px; border-radius: 50px; letter-spacing: 0.5px; }
+
+    /* Alert box */
+    .alert { background: #0d1a0d; border: 1px solid #2a3d2a; border-left: 3px solid #4caf50; border-radius: 10px; padding: 14px 18px; margin-bottom: 28px; display: flex; gap: 12px; align-items: flex-start; }
+    .alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .alert-text { font-size: 13px; color: #80b080; line-height: 1.7; }
+    .alert-text strong { color: #90c090; }
+
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, #2a2a3d, transparent); margin: 28px 0; }
+
+    .small-note { font-size: 12px; color: #505060; line-height: 1.7; text-align: center; }
+
+    /* Footer */
+    .footer { background: #0a0a12; border-top: 1px solid #1a1a2a; padding: 28px 32px; text-align: center; }
+    .footer-brand { font-size: 16px; font-weight: 700; color: #d4af37; margin-bottom: 8px; }
+    .footer-links { margin: 12px 0; }
+    .footer-links a { font-size: 12px; color: #505070; text-decoration: none; margin: 0 10px; }
+    .footer-links a:hover { color: #d4af37; }
+    .footer-copy { font-size: 11px; color: #404050; margin-top: 12px; line-height: 1.7; }
+    .footer-copy a { color: #606070; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="card">
+
+      <!-- Header -->
+      <div class="header">
+        <div class="logo-circle">N</div>
+        <div class="brand">NAFH <span>Circle</span></div>
+      </div>
+
+      <!-- Status Banner -->
+      <div class="status-banner">
+        <div class="status-pill">
+          <div class="status-dot"></div>
+          <span class="status-text">Subscription Pending Approval</span>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="body">
+        <p class="greeting">Hello, <span>{{ user.name }}</span> 👋</p>
+        <p class="message">
+          Thank you for subscribing to <strong style="color:#d4af37">NAFH Circle</strong>. 
+          We've received your subscription request and it is currently being reviewed by our team.

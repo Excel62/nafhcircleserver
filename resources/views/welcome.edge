@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Welcome to NAFH Circle
+    </title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #0a0e17 0%, #1a1f35 100%);
+        padding: 20px;
+      }
+      
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: #ffffff;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      }
+      
+      .header {
+        background: linear-gradient(135deg, #00f0ff 0%, #0099ff 100%);
+        padding: 40px 30px;
+        text-align: center;
+        color: white;
+      }
+      
+      .header h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+        font-weight: 700;
+      }
+      
+      .header .subtitle {
+        font-size: 16px;
+        opacity: 0.95;
+      }
+      
+      .checkmark {
+        font-size: 48px;
+        margin-bottom: 10px;
+        animation: scaleIn 0.5s ease-in-out;
+      }
+      
+      @keyframes scaleIn {
+        0% {
+          transform: scale(0);
+        }
+      
+        50% {
+          transform: scale(1.2);
+        }
+      
+        100% {
+          transform: scale(1);
+        }
+      }
+      
+      .content {
+        padding: 40px 30px;
+        color: #333;
+      }
+      
+      .greeting {
+        font-size: 24px;
+        color: #0a0e17;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+      
+      .message {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #555;
+        margin-bottom: 30px;
+      }
+      
+      .id-card {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        border-left: 4px solid #00f0ff;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 30px 0;
+        text-align: center;
+      }
+      
+      .id-label {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      
+      .id-number {
+        font-size: 32px;
+        font-weight: 700;
+        color: #00f0ff;
+        font-family: 'Courier New', monospace;
+        letter-spacing: 2px;
+      }
+      
+      .commission-section {
+        background: #f8fafc;
+        padding: 25px;
+        border-radius: 12px;
+        margin: 30px 0;
+      }
+      
+      .commission-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #0a0e17;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      
+      .commission-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        background: white;
+        border-radius: 8px;
+        margin-bottom: 12px;
+        border-left: 3px solid #00f0ff;
+      }
+      
+      .commission-gen {
+        font-weight: 600;
+        color: #333;
+        font-size: 14px;
+      }
+      
+      .commission-rate {
+        font-weight: 700;
+        color: #00f0ff;
+        font-size: 18px;
+      }
+      
+      .residual-section {
+        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        padding: 20px;
+        border-radius: 12px;
+        margin-top: 20px;
+        border-left: 4px solid #fbbf24;
+      }
+      
+      .residual-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #92400e;
+        margin-bottom: 8px;
+      }
+      
+      .residual-text {
+        font-size: 14px;
+        color: #78350f;
+        line-height: 1.5;
+      }
+      
+      .cta-section {
+        text-align: center;
+        margin: 40px 0;
+      }
+      
+      .cta-button {
+        display: inline-block;
+        background: linear-gradient(135deg, #00f0ff 0%, #0099ff 100%);
+        color: white;
+        padding: 16px 40px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        box-shadow: 0 4px 15px rgba(0, 240, 255, 0.3);
+        transition: transform 0.2s;
+      }
+      
+      .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 240, 255, 0.4);
+      }
+      
+      .steps {
+        background: #f1f5f9;
+        padding: 25px;
+        border-radius: 12px;
+        margin: 30px 0;
+      }
+      
+      .step {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+      }
+      
+      .step:last-child {
+        margin-bottom: 0;
+      }
+      
+      .step-number {
+        background: #00f0ff;
+        color: white;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        margin-right: 15px;
+        flex-shrink: 0;
+      }
+      
+      .step-content {
+        flex: 1;
+      }
+      
+      .step-title {
+        font-weight: 600;
+        color: #0a0e17;
+        margin-bottom: 5px;
+        font-size: 15px;
+      }
+      
+      .step-desc {
+        color: #666;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      
+      .footer {
+        background: #0a0e17;
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+      
+      .footer-text {
+        font-size: 14px;
+        margin-bottom: 15px;
+        opacity: 0.8;
+      }
+      
+      .social-links {
+        margin: 20px 0;
+      }
+      
+      .social-links a {
+        display: inline-block;
+        margin: 0 10px;
+        color: #00f0ff;
+        text-decoration: none;
+        font-size: 14px;
+      }
+      
+      .contact-info {
+        font-size: 13px;
+        color: #94a3b8;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <div class="checkmark">
+          ✅
+        </div>
+        <h1>
+          Congratulations, {{ user.name }}!
+        </h1>
+        <p class="subtitle">
+          Welcome to the Circle
+        </p>
+      </div>
+
+      <!-- Content -->
+      <div class="content">
+        <p class="message">
+          Your <strong>NAFH Circle account </strong>has been successfully activated! 
+        Your journey to financial success has just begun.
+        </p>
+
+        <!-- ID Card -->
+        <div class="id-card">
+          <div class="id-label">
+            Your Member ID
+          </div>
+          <div class="id-number">
+            {{ user.uuid }}
+          </div>
+        </div>
+
+        <!-- Steps Section -->
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">
+              1
+            </div>
+            <div class="step-content">
+              <div class="step-title">
+                Get Your 2 Friends
+              </div>
+              <div class="step-desc">
+                Invite 2 friends to join NAFH Circle and activate their subscriptions
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">
+              2
+            </div>
+            <div class="step-content">
+              <div class="step-title">
+                Help Them Build
+              </div>
+              <div class="step-desc">
+                Support your friends to get their 2 friends each 👭👬
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">
+              3
+            </div>
+            <div class="step-content">
+              <div class="step-title">
+                Earn Commissions
+              </div>
+              <div class="step-desc">
+                Watch your income grow from multiple generations!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Commission Structure -->
+        <div class="commission-section">
+          <div class="commission-title">
+            💰 Affiliate Commission Structure
+          </div>
+
+          <div class="commission-row">
+            <span class="commission-gen">1st Generation (Your Direct Referrals)</span>
+            <span class="commission-rate">40%</span>
+          </div>
+
+          <div class="commission-row">
+            <span class="commission-gen">2nd Generation</span>
+            <span class="commission-rate">10%</span>
+          </div>
+
+          <div class="commission-row">
+            <span class="commission-gen">3rd Generation</span>
+            <span class="commission-rate">4%</span>
+          </div>
+
+          <div class="commission-row">
+            <span class="commission-gen">4th Generation</span>
+            <span class="commission-rate">2%</span>
+          </div>
+
+          <!-- Residual Income -->
+          <div class="residual-section">
+            <div class="residual-title">
+              🌟 Bonus: Residual Income (Circle 4+)
+            </div>
+            <div class="residual-text">
+              Earn <strong>0.5% residual income</strong>from the 1st to 10th generation starting from Circle 4!
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+          <a href="{{ dashboardUrl }}" class="cta-button">
+            Access Your Dashboard
+        </a>
+        </div>
+
+        <p class="message" style="text-align: center; font-size: 14px; color: #666; margin-top: 30px;">
+          Need help getting started? Our support team is here for you 24/7.
+        </p>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p class="footer-text">
+          Welcome to the NAFH Circle family! 🎉
+        </p>
+
+        <div class="social-links">
+          <a href="https://twitter.com/nafhcircle">Twitter</a>
+          <a href="https://facebook.com/nafhcircle">Facebook</a>
+          <a href="https://instagram.com/nafhcircle">Instagram</a>
+        </div>
+
+        <div class="contact-info">
+          <p>
+            NAFH Circle
+          </p>
+          <p>
+            support
+            @nafhcircle.com
+          </p>
+          <p>
+            &copy; {{ new Date().getFullYear() }} NAFH Circle. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
